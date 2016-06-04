@@ -20,6 +20,15 @@ class AesRandomizer:
 
 
 class IndexEncryptor:
+    """
+    Encrypt indexes using pseudo-random function.
+
+    :param randomizers: List of instances with an appropriate pseudo-random ``randomize``
+        method and ``domain_size`` integer attribute,  such as :py:class:`AesRandomizer`
+        objects.
+    :param size: Size of the domain
+    :type size: int
+    """
     def __init__(self, randomizers, size):
         if any(size > randomizer.domain_size for randomizer in randomizers):
             raise ValueError('Size too big for at least one of the randomizers')
@@ -28,6 +37,12 @@ class IndexEncryptor:
         self._a = self._b = math.ceil(math.sqrt(size))
 
     def encrypt(self, index):
+        """
+        Permutation of ``range(self.size)``
+
+        :param index: Integer in ``range(self.size)``
+        :type index: int
+        """
         if index not in range(self.size):
             raise ValueError('Index out of range')
         return feistel.encrypt(self.round_functions, self._a, self._b, index, self.size)

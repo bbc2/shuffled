@@ -16,6 +16,26 @@ def _encrypt(round_functions, a, b, m):
 
 
 def encrypt(round_functions, a, b, m, size):
+    """
+    Generalized-Feistel encryption
+
+    :param round_functions: List of pseudo-random functions with values in ``range(n)``
+                            where ``n >= size``
+    :type round_functions: int -> int
+    :param a: Positive integer
+    :type a: int
+    :param b: Positive integer
+    :type b: int
+    :param m: Message to encrypt in ``range(size)``
+    :type m: int
+    :param size: Size of the domain
+    :type size: int
+
+    The algorithm comes from `Black and Rogaway`_ (Ciphers with Arbitrary Finite Domains,
+    2002).
+
+    .. _Black and Rogaway: http://web.cs.ucdavis.edu/~rogaway/papers/subset.pdf
+    """
     ciphertext = m
     while True:
         ciphertext = _encrypt(round_functions, a, b, ciphertext)
