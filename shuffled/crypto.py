@@ -43,6 +43,6 @@ class IndexEncryptor:
         :param index: Integer in ``range(self.size)``
         :type index: int
         """
-        if index not in range(self.size):
+        if index < 0 or index >= self.size:
             raise ValueError('Index out of range')
         return feistel.encrypt(self.round_functions, self._a, self._b, index, self.size)

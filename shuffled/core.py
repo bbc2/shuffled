@@ -37,7 +37,7 @@ class Shuffled:
         return self._size
 
     def __getitem__(self, index):
-        if index not in range(len(self)):
+        if index < 0 or index >= self._size:
             raise IndexError
         return self._encryptor.encrypt(index)
 
