@@ -6,8 +6,8 @@ from . import feistel
 
 
 class AesRandomizer:
-    _block_size_bytes = 32
-    domain_size = 2 ** _block_size_bytes
+    _block_size_bytes = 16
+    domain_size = 2 ** (_block_size_bytes * 8)
 
     def __init__(self, key):
         self._cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
@@ -43,6 +43,6 @@ class IndexEncryptor:
         :param index: Integer in ``range(self.size)``
         :type index: int
         """
-        if index not in range(self.size):
+        if index < 0 or index >= self.size:
             raise ValueError('Index out of range')
         return feistel.encrypt(self.round_functions, self._a, self._b, index, self.size)
