@@ -21,7 +21,7 @@ def encrypt(round_functions, a, b, m, size):
 
     :param round_functions: List of pseudo-random functions with values in ``range(n)``
                             where ``n >= size``
-    :type round_functions: int -> int
+    :type round_functions: List[int -> int]
     :param a: Positive integer
     :type a: int
     :param b: Positive integer
