@@ -1,5 +1,9 @@
 *.pyc
 .coverage
+MANIFEST
 _build
+build
 cover
+dist
+shuffled.egg-info
 venv
