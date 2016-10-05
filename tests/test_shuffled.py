@@ -1,9 +1,9 @@
-import unittest
+import unittest2
 
 from shuffled import Shuffled
 
 
-class TestShuffled(unittest.TestCase):
+class TestShuffled(unittest2.TestCase):
     def test_normal(self):
         for i in range(0, 1000, 100):
             with self.subTest(i=i):
