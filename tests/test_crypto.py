@@ -1,4 +1,4 @@
-import unittest
+import unittest2
 
 from shuffled import crypto
 
@@ -9,7 +9,7 @@ KEYS = (
 )
 
 
-class TestEncryptor(unittest.TestCase):
+class TestEncryptor(unittest2.TestCase):
     def test_two_rounds(self):
         randomizers = [crypto.AesRandomizer(key) for key in KEYS[:2]]
         encryptor = crypto.IndexEncryptor(randomizers, 2)
