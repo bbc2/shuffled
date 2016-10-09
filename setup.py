@@ -3,13 +3,13 @@ from setuptools import setup
 setup(
     name='shuffled',
     packages=['shuffled'],
-    version='0.1',
+    version='0.2',
     description='Iterate randomly over large integer ranges',
     long_description=open('README.rst', 'r').read(),
     author='Bertrand Bonnefoy-Claudet',
     author_email='bertrandbc@gmail.com',
     url='https://github.com/bbc2/shuffled',
-    download_url='https://github.com/bbc2/shuffled/tarball/v0.1',
+    download_url='https://github.com/bbc2/shuffled/tarball/v0.2',
     keywords=['random', 'integer', 'iterator'],
     license='MIT',
     classifiers=[
