@@ -3,5 +3,6 @@ python:
   - '2.7'
   - '3.4'
   - '3.5'
-install: pip install -r requirements.txt -r dev-requirements.txt
+cache: pip
+install: pip install --editable .[dev]
 script: nosetests --with-coverage --cover-erase --cover-html --cover-package shuffled tests
