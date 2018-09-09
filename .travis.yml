@@ -3,5 +3,8 @@ python:
   - '2.7'
   - '3.4'
   - '3.5'
-install: pip install -r requirements.txt -r dev-requirements.txt
-script: nosetests --with-coverage --cover-erase --cover-html --cover-package shuffled tests
+cache: pip
+install:
+  - pip install --upgrade pipenv
+  - pipenv install --dev --skip-lock
+script: pipenv run nosetests --with-coverage --cover-erase --cover-html --cover-package shuffled tests
