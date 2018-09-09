@@ -26,4 +26,12 @@ setup(
     install_requires=[
         'cryptography',
     ],
+    extras_require={
+        'dev': [
+            'coverage',
+            'flake8',
+            'nose',
+            'unittest2',
+        ],
+    },
 )

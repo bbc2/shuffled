@@ -5,6 +5,5 @@ python:
   - '3.5'
 cache: pip
 install:
-  - pip install --upgrade pipenv
-  - pipenv install --dev --skip-lock
-script: pipenv run nosetests --with-coverage --cover-erase --cover-html --cover-package shuffled tests
+  - pip install --editable .[dev]
+script: nosetests --with-coverage --cover-erase --cover-html --cover-package shuffled tests
