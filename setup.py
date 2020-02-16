@@ -26,5 +26,5 @@ setup(
         "Programming Language :: Python :: Implementation :: PyPy",
     ],
     install_requires=["cryptography",],
-    extras_require={"dev": ["coverage", "flake8", "nose", "unittest2",],},
+    extras_require={"dev": ["flake8", "pytest", "pytest-cov", "unittest2",],},
 )

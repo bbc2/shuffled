@@ -6,7 +6,7 @@ check-format:
 
 .PHONY: check-tests
 check-tests:
-	nosetests --with-coverage --cover-erase --cover-html --cover-package src tests
+	pytest --cov=src --cov-report=term --cov-report=html
 
 .PHONY: check
 check: | check-tests check-format
