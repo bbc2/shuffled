@@ -9,7 +9,9 @@ class AesRandomizer:
     domain_size = 2 ** 128
 
     def __init__(self, key):
-        self._cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+        self._cipher = Cipher(
+            algorithms.AES(key), modes.ECB(), backend=default_backend()
+        )
 
     def randomize(self, integer):
         encoded = compat.int128_to_bytes(integer)
@@ -28,9 +30,10 @@ class IndexEncryptor:
     :param size: Size of the domain
     :type size: int
     """
+
     def __init__(self, randomizers, size):
         if any(size > randomizer.domain_size for randomizer in randomizers):
-            raise ValueError('Size too big for at least one of the randomizers')
+            raise ValueError("Size too big for at least one of the randomizers")
         self.round_functions = [randomizer.randomize for randomizer in randomizers]
         self.size = size
         self._a = self._b = int(math.ceil(math.sqrt(size)))
@@ -43,5 +46,5 @@ class IndexEncryptor:
         :type index: int
         """
         if index < 0 or index >= self.size:
-            raise ValueError('Index out of range')
+            raise ValueError("Index out of range")
         return feistel.encrypt(self.round_functions, self._a, self._b, index, self.size)

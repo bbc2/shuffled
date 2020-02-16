@@ -1,8 +1,15 @@
 language: python
-python:
-  - '2.7'
-  - '3.4'
-  - '3.5'
 cache: pip
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+jobs:
+  include:
+    - python: "3.8"
+      script:
+        - pip install black
+        - make check
 install: pip install --editable .[dev]
-script: nosetests --with-coverage --cover-erase --cover-html --cover-package src tests
+script:
+  - make check-tests

@@ -3,9 +3,9 @@ import unittest2
 from shuffled import crypto
 
 KEYS = (
-    b'\x00' * 16,
-    b'\x01' * 16,
-    b'\x02' * 16,
+    b"\x00" * 16,
+    b"\x01" * 16,
+    b"\x02" * 16,
 )
 
 
