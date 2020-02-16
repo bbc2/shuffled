@@ -9,7 +9,7 @@ setup(
     long_description=open('README.md', 'r').read(),
     long_description_content_type='text/markdown',
     author='Bertrand Bonnefoy-Claudet',
-    author_email='bertrandbc@gmail.com',
+    author_email='bertrand@bertrandbc.com',
     url='https://github.com/bbc2/shuffled',
     download_url='https://github.com/bbc2/shuffled/tarball/v0.2',
     keywords=['random', 'integer', 'iterator'],
