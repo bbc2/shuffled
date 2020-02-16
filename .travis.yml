@@ -5,4 +5,4 @@ python:
   - '3.5'
 cache: pip
 install: pip install --editable .[dev]
-script: nosetests --with-coverage --cover-erase --cover-html --cover-package shuffled tests
+script: nosetests --with-coverage --cover-erase --cover-html --cover-package src tests

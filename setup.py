@@ -3,6 +3,7 @@ from setuptools import setup
 setup(
     name='shuffled',
     packages=['shuffled'],
+    package_dir={'': 'src'},
     version='0.2',
     description='Iterate randomly over large integer ranges',
     long_description=open('README.md', 'r').read(),
