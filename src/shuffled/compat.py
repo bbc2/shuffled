@@ -2,11 +2,11 @@ import struct
 
 
 def int128_to_bytes(integer):
-    low = integer & 0xffffffffffffffff
+    low = integer & 0xFFFFFFFFFFFFFFFF
     high = integer >> 64
-    return struct.pack('>QQ', high, low)
+    return struct.pack(">QQ", high, low)
 
 
 def int128_from_bytes(encoded):
-    (high, low) = struct.unpack('>QQ', encoded)
+    (high, low) = struct.unpack(">QQ", encoded)
     return (high << 64) + low

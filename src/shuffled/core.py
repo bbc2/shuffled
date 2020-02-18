@@ -29,7 +29,7 @@ class Shuffled:
         else:
             self._seed = seed
         material = hashlib.sha512(self.seed).digest()
-        keys = [material[i:i + 16] for i in range(0, 3 * 16, 16)]
+        keys = [material[i : i + 16] for i in range(0, 3 * 16, 16)]
         randomizers = [crypto.AesRandomizer(key) for key in keys]
         self._encryptor = crypto.IndexEncryptor(randomizers, range_size)
 
