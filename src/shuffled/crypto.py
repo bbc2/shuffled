@@ -2,7 +2,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 import math
 
-from . import compat, feistel
+from . import feistel
 
 
 class AesRandomizer:
@@ -14,10 +14,10 @@ class AesRandomizer:
         )
 
     def randomize(self, integer):
-        encoded = compat.int128_to_bytes(integer)
+        encoded = integer.to_bytes(128, byteorder="big")
         encryptor = self._cipher.encryptor()
         encrypted = encryptor.update(encoded) + encryptor.finalize()
-        return compat.int128_from_bytes(encrypted)
+        return int.from_bytes(encrypted, byteorder="big")
 
 
 class IndexEncryptor:
