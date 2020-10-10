@@ -1,6 +1,6 @@
 import hashlib
 import os
-from typing import Any, Sequence, Union, overload
+from typing import Sequence, Union, overload
 
 from . import crypto
 
@@ -38,14 +38,14 @@ class Shuffled(Sequence):
         return self._size
 
     @overload
-    def __getitem__(self, index: int) -> Any:
+    def __getitem__(self, index: int) -> int:
         ...
 
     @overload
-    def __getitem__(self, index: slice) -> Sequence[Any]:
+    def __getitem__(self, index: slice) -> Sequence[int]:
         ...
 
-    def __getitem__(self, index: Union[int, slice]) -> Union[Any, Sequence[Any]]:
+    def __getitem__(self, index: Union[int, slice]) -> Union[int, Sequence[int]]:
         if isinstance(index, slice):
             raise NotImplementedError
         if index < 0 or index >= self._size:
