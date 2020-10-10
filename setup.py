@@ -30,7 +30,6 @@ setup(
         "tests": [
             "pytest",
             "pytest-cov",
-            "unittest2",
         ],
         "dev": [
             "black",

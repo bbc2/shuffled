@@ -1,4 +1,4 @@
-import unittest2
+import pytest
 
 from shuffled import crypto
 
@@ -9,7 +9,7 @@ KEYS = (
 )
 
 
-class TestEncryptor(unittest2.TestCase):
+class TestEncryptor:
     def test_two_rounds(self):
         randomizers = [crypto.AesRandomizer(key) for key in KEYS[:2]]
         encryptor = crypto.IndexEncryptor(randomizers, 2)
@@ -25,12 +25,12 @@ class TestEncryptor(unittest2.TestCase):
     def test_out_of_bounds(self):
         randomizers = [crypto.AesRandomizer(key) for key in KEYS]
         encryptor = crypto.IndexEncryptor(randomizers, 2)
-        with self.assertRaises(ValueError):
+        with pytest.raises(ValueError):
             encryptor.encrypt(2)
 
     def test_size_too_big(self):
         randomizers = [crypto.AesRandomizer(key) for key in KEYS]
         domain_size = randomizers[0].domain_size
         crypto.IndexEncryptor(randomizers, domain_size)
-        with self.assertRaises(ValueError):
+        with pytest.raises(ValueError):
             crypto.IndexEncryptor(randomizers, domain_size + 1)

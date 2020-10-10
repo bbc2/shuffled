@@ -1,16 +1,20 @@
-import unittest2
+import pytest
 
 from shuffled import Shuffled
 
 
-class TestShuffled(unittest2.TestCase):
-    def test_normal(self):
-        for i in range(0, 1000, 100):
-            with self.subTest(i=i):
-                shuffled_range = Shuffled(i)
-                self.assertEqual(sorted(list(shuffled_range)), list(range(i)))
+class TestShuffled:
+    @pytest.mark.parametrize(
+        "range_size",
+        range(0, 1000, 100),
+    )
+    def test_normal(self, range_size):
+        shuffled_range = Shuffled(range_size)
+        assert sorted(list(shuffled_range)) == list(range(range_size))
 
-    def test_seed(self):
-        for seed in (b"", b"\x00", b"\x01"):
-            with self.subTest(seed=seed):
-                self.assertEqual(list(Shuffled(20, seed)), list(Shuffled(20, seed)))
+    @pytest.mark.parametrize(
+        "seed",
+        (b"", b"\x00", b"\x01"),
+    )
+    def test_seed(self, seed):
+        assert list(Shuffled(20, seed)) == list(Shuffled(20, seed))
