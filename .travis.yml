@@ -4,12 +4,11 @@ os: linux
 python:
   - "2.7"
   - "3.4"
-  - "3.5"
 jobs:
   include:
     - python: "3.8"
       script:
-        - pip install black
+        - pip install black mypy
         - make check
 install: pip install --editable .[dev]
 script:

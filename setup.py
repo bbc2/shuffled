@@ -25,6 +25,18 @@ setup(
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
     ],
-    install_requires=["cryptography",],
-    extras_require={"dev": ["flake8", "pytest", "pytest-cov", "unittest2",],},
+    install_requires=[
+        "cryptography",
+    ],
+    extras_require={
+        "dev": [
+            "flake8",
+            "pytest",
+            "pytest-cov",
+            "unittest2",
+        ],
+    },
+    package_data={
+        "shuffled": ["py.typed"],
+    },
 )
