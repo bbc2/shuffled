@@ -27,11 +27,15 @@ setup(
         "cryptography",
     ],
     extras_require={
-        "dev": [
-            "flake8",
+        "tests": [
             "pytest",
             "pytest-cov",
             "unittest2",
+        ],
+        "dev": [
+            "black",
+            "mypy",
+            "flake8",
         ],
     },
     package_data={
