@@ -1,23 +1,36 @@
+import math
+from abc import ABC, abstractmethod, abstractproperty
+from typing import Sequence
+
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
-import math
 
-from . import compat, feistel
+from . import feistel
 
 
-class AesRandomizer:
+class Randomizer(ABC):
+    @abstractproperty
+    def domain_size(self) -> int:
+        ...
+
+    @abstractmethod
+    def randomize(self, integer: int) -> int:
+        ...
+
+
+class AesRandomizer(Randomizer):
     domain_size = 2 ** 128
 
-    def __init__(self, key):
+    def __init__(self, key: bytes) -> None:
         self._cipher = Cipher(
             algorithms.AES(key), modes.ECB(), backend=default_backend()
         )
 
-    def randomize(self, integer):
-        encoded = compat.int128_to_bytes(integer)
+    def randomize(self, integer: int) -> int:
+        encoded = integer.to_bytes(128, byteorder="big")
         encryptor = self._cipher.encryptor()
         encrypted = encryptor.update(encoded) + encryptor.finalize()
-        return compat.int128_from_bytes(encrypted)
+        return int.from_bytes(encrypted, byteorder="big")
 
 
 class IndexEncryptor:
@@ -31,14 +44,14 @@ class IndexEncryptor:
     :type size: int
     """
 
-    def __init__(self, randomizers, size):
+    def __init__(self, randomizers: Sequence[Randomizer], size: int) -> None:
         if any(size > randomizer.domain_size for randomizer in randomizers):
             raise ValueError("Size too big for at least one of the randomizers")
         self.round_functions = [randomizer.randomize for randomizer in randomizers]
         self.size = size
         self._a = self._b = int(math.ceil(math.sqrt(size)))
 
-    def encrypt(self, index):
+    def encrypt(self, index: int) -> int:
         """
         Permutation of ``range(self.size)``
 

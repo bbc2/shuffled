@@ -1,6 +1,6 @@
 import hashlib
 import os
-from typing import Sequence, Any, overload, Union
+from typing import Sequence, Union, overload
 
 from . import crypto
 
@@ -22,7 +22,7 @@ class Shuffled(Sequence):
     [4, 1, 2, 9, 8, 5, 3, 0, 6, 7]
     """
 
-    def __init__(self, range_size, seed=None):  # type: (int, bytes) -> None
+    def __init__(self, range_size: int, seed: bytes = None) -> None:
         self._size = range_size
 
         if seed is None:
@@ -34,20 +34,18 @@ class Shuffled(Sequence):
         randomizers = [crypto.AesRandomizer(key) for key in keys]
         self._encryptor = crypto.IndexEncryptor(randomizers, range_size)
 
-    def __len__(self):  # type: () -> int
+    def __len__(self) -> int:
         return self._size
 
     @overload
-    def __getitem__(self, index):  # type: (int) -> Any
-        pass
+    def __getitem__(self, index: int) -> int:
+        ...
 
     @overload
-    def __getitem__(self, index):  # type: (slice) -> Sequence[Any]
-        pass
+    def __getitem__(self, index: slice) -> Sequence[int]:
+        ...
 
-    def __getitem__(
-        self, index
-    ):  # type: (Union[int, slice]) -> Union[Any, Sequence[Any]]
+    def __getitem__(self, index: Union[int, slice]) -> Union[int, Sequence[int]]:
         if isinstance(index, slice):
             raise NotImplementedError
         if index < 0 or index >= self._size:
@@ -55,7 +53,7 @@ class Shuffled(Sequence):
         return self._encryptor.encrypt(index)
 
     @property
-    def seed(self):  # type: () -> bytes
+    def seed(self) -> bytes:
         """
         Seed of the randomization.
 

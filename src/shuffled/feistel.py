@@ -1,4 +1,12 @@
-def _encrypt(round_functions, a, b, m):
+from typing import Callable, Sequence
+
+
+def _encrypt(
+    round_functions: Sequence[Callable[[int], int]],
+    a: int,
+    b: int,
+    m: int,
+) -> int:
     l = m % a
     r = m // a
     for (j, round_function) in enumerate(round_functions):
@@ -15,7 +23,13 @@ def _encrypt(round_functions, a, b, m):
         return a * r + l
 
 
-def encrypt(round_functions, a, b, m, size):
+def encrypt(
+    round_functions: Sequence[Callable[[int], int]],
+    a: int,
+    b: int,
+    m: int,
+    size: int,
+) -> int:
     """
     Generalized-Feistel encryption
 
