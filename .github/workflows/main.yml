@@ -12,8 +12,9 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - run: pip install --editable '.[tests]'
-      - run: make check-tests
+      - run: pip install --upgrade pip poetry
+      - run: poetry install --extras tests
+      - run: poetry run make check-tests
   check-dev:
     runs-on: ubuntu-latest
     strategy:
@@ -24,6 +25,7 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - run: pip install --editable '.[dev]'
-      - run: make check-lint
-      - run: make check-format
+      - run: pip install --upgrade pip poetry
+      - run: poetry install --extras dev
+      - run: poetry run make check-lint
+      - run: poetry run make check-format
