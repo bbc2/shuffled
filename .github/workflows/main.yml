@@ -41,4 +41,3 @@ jobs:
         with:
           user: __token__
           password: ${{ secrets.pypi_token }}
-          repository_url: https://pypi.org/legacy/
