@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "shuffled"
-version = "0.3.0"
+version = "1.0.0"
 description = "Iterate randomly over integer ranges"
 readme = "README.md"
 homepage = "https://github.com/bbc2/shuffled"
