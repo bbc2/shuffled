@@ -1,4 +1,4 @@
-SRC=setup.py src tests
+SRC=src tests
 
 .PHONY: check-format
 check-format:
