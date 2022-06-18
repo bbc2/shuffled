@@ -10,7 +10,8 @@ check-tests:
 
 .PHONY: check-lint
 check-lint:
-	mypy ${SRC}
+	mypy --python-version 3.10 ${SRC}
+	mypy --python-version 3.7 ${SRC}
 	flake8 ${SRC}
 
 .PHONY: check

@@ -5,24 +5,24 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.5', '3.6', '3.7', '3.8', '3.9', 'pypy3']
+        python-version: ['3.7', '3.10', 'pypy3.8']
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install --upgrade pip poetry
-      - run: poetry install --extras tests
+      - run: poetry install
       - run: poetry run make check-tests
   check-dev:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.10'
       - run: pip install --upgrade pip poetry
-      - run: poetry install --extras dev
+      - run: poetry install
       - run: poetry run make check-lint
       - run: poetry run make check-format
       - run: poetry run poetry build
@@ -32,9 +32,9 @@ jobs:
     needs: [check-tests, check-dev]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.10'
       - run: pip install --upgrade pip poetry
       - run: poetry run poetry build
       - uses: pypa/gh-action-pypi-publish@master
