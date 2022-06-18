@@ -19,7 +19,7 @@ class Randomizer(ABC):
 
 
 class AesRandomizer(Randomizer):
-    domain_size = 2 ** 128
+    domain_size = 2**128
 
     def __init__(self, key: bytes) -> None:
         self._cipher = Cipher(
