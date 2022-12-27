@@ -1,6 +1,6 @@
 import hashlib
 import os
-from typing import Sequence, Union, overload
+from typing import Optional, Sequence, Union, overload
 
 from . import crypto
 
@@ -22,7 +22,7 @@ class Shuffled(Sequence):
     [4, 1, 2, 9, 8, 5, 3, 0, 6, 7]
     """
 
-    def __init__(self, range_size: int, seed: bytes = None) -> None:
+    def __init__(self, range_size: int, seed: Optional[bytes] = None) -> None:
         self._size = range_size
 
         if seed is None:
