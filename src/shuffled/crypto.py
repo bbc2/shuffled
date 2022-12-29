@@ -22,14 +22,12 @@ class AesRandomizer(Randomizer):
     domain_size = 2**128
 
     def __init__(self, key: bytes) -> None:
-        self._cipher = Cipher(
-            algorithms.AES(key), modes.ECB(), backend=default_backend()
-        )
+        cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+        self._encryptor = cipher.encryptor()
 
     def randomize(self, integer: int) -> int:
         encoded = integer.to_bytes(128, byteorder="big")
-        encryptor = self._cipher.encryptor()
-        encrypted = encryptor.update(encoded) + encryptor.finalize()
+        encrypted = self._encryptor.update(encoded)
         return int.from_bytes(encrypted, byteorder="big")
 
 
