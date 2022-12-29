@@ -18,11 +18,12 @@ keywords = ["random", "integer", "iterator"]
 python = "^3.7"
 cryptography = "*"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 black = {version = "*"}
 flake8 = {version = "*"}
 mypy = {version = "*"}
 pytest = {version = "*"}
+pytest-benchmark = {version = "*"}
 pytest-cov = {version = "*"}
 
 [build-system]

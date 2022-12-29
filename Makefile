@@ -1,4 +1,4 @@
-SRC=src tests
+SRC=benchmark src tests
 
 .PHONY: check-format
 check-format:
@@ -6,7 +6,7 @@ check-format:
 
 .PHONY: check-tests
 check-tests:
-	pytest --cov=src --cov-report=term --cov-report=html
+	pytest --cov=src --cov-report=term --cov-report=html tests
 
 .PHONY: check-lint
 check-lint:
@@ -20,3 +20,7 @@ check: | check-lint check-tests check-format
 .PHONY: format
 format:
 	black ${SRC}
+
+.PHONY: benchmark
+benchmark:
+	pytest benchmark
