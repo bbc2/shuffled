@@ -19,12 +19,12 @@ python = "^3.7"
 cryptography = "*"
 
 [tool.poetry.group.dev.dependencies]
-black = {version = "*"}
-flake8 = {version = "*"}
-mypy = {version = "*"}
-pytest = {version = "*"}
-pytest-benchmark = {version = "*"}
-pytest-cov = {version = "*"}
+black = {version = "^22.12.0"}
+flake8 = {version = "^5.0.4"}
+mypy = {version = "^0.991"}
+pytest = {version = "^7.2.0"}
+pytest-benchmark = {version = "^4.0.0"}
+pytest-cov = {version = "^4.0.0"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
