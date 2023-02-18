@@ -9,7 +9,7 @@ def _encrypt(
 ) -> int:
     l = m % a
     r = m // a
-    for (j, round_function) in enumerate(round_functions):
+    for j, round_function in enumerate(round_functions):
         if j % 2 == 0:
             tmp = (l + round_function(r)) % a
         else:
