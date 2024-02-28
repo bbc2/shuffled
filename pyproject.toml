@@ -21,16 +21,16 @@ cryptography = "*"
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
 mypy = "^1.4.1"
-pytest = "^7.2.0"
+pytest = "^7.4.4"
 pytest-benchmark = "^4.0.0"
 pytest-cov = "^4.0.0"
-ruff = "^0.0.286"
+ruff = "^0.2.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
-select = ["E", "F", "I", "W"]
-ignore = ["E501", "E741"]
+lint.select = ["E", "F", "I", "W"]
+lint.ignore = ["E501", "E741"]
 line-length = 88
