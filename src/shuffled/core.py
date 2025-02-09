@@ -38,12 +38,10 @@ class Shuffled(Sequence):
         return self._size
 
     @overload
-    def __getitem__(self, index: int) -> int:
-        ...
+    def __getitem__(self, index: int) -> int: ...
 
     @overload
-    def __getitem__(self, index: slice) -> Sequence[int]:
-        ...
+    def __getitem__(self, index: slice) -> Sequence[int]: ...
 
     def __getitem__(self, index: Union[int, slice]) -> Union[int, Sequence[int]]:
         if isinstance(index, slice):

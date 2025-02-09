@@ -1,4 +1,5 @@
 import pytest
+
 from shuffled import Shuffled
 
 

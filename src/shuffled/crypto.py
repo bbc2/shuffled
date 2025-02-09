@@ -10,12 +10,10 @@ from . import feistel
 
 class Randomizer(ABC):
     @abstractproperty
-    def domain_size(self) -> int:
-        ...
+    def domain_size(self) -> int: ...
 
     @abstractmethod
-    def randomize(self, integer: int) -> int:
-        ...
+    def randomize(self, integer: int) -> int: ...
 
 
 class AesRandomizer(Randomizer):

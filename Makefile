@@ -3,7 +3,7 @@ SRC=benchmark src tests
 .PHONY: check-format
 check-format:
 	ruff check --select I ${SRC}
-	black --check ${SRC}
+	ruff format --diff ${SRC}
 
 .PHONY: check-tests
 check-tests:
@@ -11,8 +11,8 @@ check-tests:
 
 .PHONY: check-lint
 check-lint:
-	mypy --python-version 3.10 ${SRC}
-	mypy --python-version 3.7 ${SRC}
+	mypy --python-version 3.13 ${SRC}
+	mypy --python-version 3.9 ${SRC}
 	ruff check --ignore I ${SRC}
 
 .PHONY: check
@@ -21,7 +21,7 @@ check: | check-lint check-tests check-format
 .PHONY: format
 format:
 	ruff check --select I --fix ${SRC}
-	black ${SRC}
+	ruff format ${SRC}
 
 .PHONY: benchmark
 benchmark:
