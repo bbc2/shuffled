@@ -23,7 +23,7 @@ mypy = "^1.15.0"
 pytest = "^8.3.4"
 pytest-benchmark = "^5.1.0"
 pytest-cov = "^6.0.0"
-ruff = "^0.9.5"
+ruff = "^0.11.7"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
