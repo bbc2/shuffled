@@ -1,33 +1,38 @@
-[tool.poetry]
+
+[project]
 name = "shuffled"
 version = "1.1.0"
 description = "Iterate randomly over integer ranges"
 readme = "README.md"
-homepage = "https://github.com/bbc2/shuffled"
-authors = ["Bertrand Bonnefoy-Claudet <bertrand@bertrandbc.com>"]
+requires-python = ">=3.9"
 license = "MIT"
-classifiers = [
-    "Intended Audience :: Developers",
-    "Programming Language :: Python :: Implementation :: CPython",
-    "Programming Language :: Python :: Implementation :: PyPy",
-    "Typing :: Typed",
+authors = [
+  { name = "Bertrand Bonnefoy-Claudet", email = "bertrand@bertrandbc.com" },
 ]
+homepage = "https://github.com/bbc2/shuffled"
 keywords = ["random", "integer", "iterator"]
+classifiers = [
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+  "Typing :: Typed",
+]
+dependencies = [
+  "cryptography",
+]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-cryptography = "*"
-
-[tool.poetry.group.dev.dependencies]
-mypy = "^1.15.0"
-pytest = "^8.3.4"
-pytest-benchmark = "^5.1.0"
-pytest-cov = "^6.0.0"
-ruff = "^0.11.7"
+[dependency-groups]
+dev = [
+  "mypy>=1.15.0",
+  "pytest>=8.3.4",
+  "pytest-benchmark>=5.1.0",
+  "pytest-cov>=6.0.0",
+  "ruff>=0.11.7",
+]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling>=1.16"]
+build-backend = "hatchling.build"
 
 [tool.ruff]
 lint.select = ["E", "F", "I", "W"]
