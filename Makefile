@@ -11,8 +11,7 @@ check-tests:
 
 .PHONY: check-lint
 check-lint:
-	mypy --python-version 3.13 ${SRC}
-	mypy --python-version 3.9 ${SRC}
+	pyrefly check ${SRC}
 	ruff check --ignore I ${SRC}
 
 .PHONY: check
