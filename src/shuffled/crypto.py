@@ -1,5 +1,5 @@
 import math
-from abc import ABC, abstractmethod, abstractproperty
+from abc import ABC, abstractmethod
 from typing import Sequence
 
 from cryptography.hazmat.backends import default_backend
@@ -9,7 +9,8 @@ from . import feistel
 
 
 class Randomizer(ABC):
-    @abstractproperty
+    @property
+    @abstractmethod
     def domain_size(self) -> int: ...
 
     @abstractmethod
@@ -17,7 +18,9 @@ class Randomizer(ABC):
 
 
 class AesRandomizer(Randomizer):
-    domain_size = 2**128
+    @property
+    def domain_size(self) -> int:
+        return 2**128
 
     def __init__(self, key: bytes) -> None:
         cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
