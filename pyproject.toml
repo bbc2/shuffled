@@ -23,7 +23,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-  "mypy>=1.15.0",
+  "pyrefly>=0.16.2",
   "pytest>=8.3.4",
   "pytest-benchmark>=5.1.0",
   "pytest-cov>=6.0.0",
