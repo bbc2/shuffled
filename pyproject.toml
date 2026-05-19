@@ -1,7 +1,7 @@
 
 [project]
 name = "shuffled"
-version = "1.1.0"
+version = "1.2.0"
 description = "Iterate randomly over integer ranges"
 readme = "README.md"
 requires-python = ">=3.9"
