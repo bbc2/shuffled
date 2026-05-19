@@ -31,3 +31,15 @@ class TestShuffled:
     )
     def test_seed(self, seed, expected):
         assert list(Shuffled(20, seed)) == expected
+
+    def test_negative_index(self):
+        s = Shuffled(10, seed=b"\x00")
+
+        assert s[-1] == s[9]
+        assert s[-10] == s[0]
+
+    def test_negative_index_out_of_bounds(self):
+        s = Shuffled(10, seed=b"\x00")
+
+        with pytest.raises(IndexError):
+            s[-11]
