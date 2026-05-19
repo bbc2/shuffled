@@ -9,6 +9,9 @@ Versioning].
 
 - Drop support for Python 3.7, Python 3.8 and PyPy3.8.
 - Add tests with Python 3.14 and PyPy3.11.
+- Improve performance by reducing the AES plaintext size. Note: this changes the
+  ordering of integers for existing seeds, which may be a breaking change depending
+  on the use case.
 
 ## [1.1.0] - 2022-12-29
 
