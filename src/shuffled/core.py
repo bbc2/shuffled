@@ -45,7 +45,9 @@ class Shuffled(Sequence):
 
     def __getitem__(self, index: Union[int, slice]) -> Union[int, Sequence[int]]:
         if isinstance(index, slice):
-            raise NotImplementedError
+            return [
+                self._encryptor.encrypt(i) for i in range(*index.indices(self._size))
+            ]
         if index < 0:
             index += self._size
         if index < 0 or index >= self._size:

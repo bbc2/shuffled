@@ -33,13 +33,24 @@ class TestShuffled:
         assert list(Shuffled(20, seed)) == expected
 
     def test_negative_index(self):
-        s = Shuffled(10, seed=b"\x00")
-
-        assert s[-1] == s[9]
-        assert s[-10] == s[0]
+        subject = Shuffled(10, seed=b"\x00")
+        assert subject[-1] == subject[9]
+        assert subject[-10] == subject[0]
 
     def test_negative_index_out_of_bounds(self):
-        s = Shuffled(10, seed=b"\x00")
+        subject = Shuffled(10, seed=b"\x00")
 
         with pytest.raises(IndexError):
-            s[-11]
+            subject[-11]
+
+    def test_slice(self):
+        subject = Shuffled(10)
+        ref = list(subject)
+        assert subject[2:5] == ref[2:5]
+        assert subject[:3] == ref[:3]
+        assert subject[7:] == ref[7:]
+        assert subject[::2] == ref[::2]
+        assert subject[-3:] == ref[-3:]
+        assert subject[1:-1] == ref[1:-1]
+        assert subject[5:2:-1] == ref[5:2:-1]
+        assert subject[20:30] == ref[20:30]
