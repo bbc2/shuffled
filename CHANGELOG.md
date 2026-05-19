@@ -7,6 +7,8 @@ Versioning].
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-05-19
+
 - Drop support for Python 3.7, Python 3.8 and PyPy3.8.
 - Add tests with Python 3.14 and PyPy3.11.
 - Improve performance by reducing the AES plaintext size. Note: this changes the
@@ -43,7 +45,8 @@ Versioning].
 
   [Keep a Changelog]: https://keepachangelog.com/en/1.0.0/
   [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
-  [Unreleased]: https://github.com/bbc2/shuffled/compare/1.1.0...main
+  [Unreleased]: https://github.com/bbc2/shuffled/compare/1.2.0...main
+  [1.2.0]: https://github.com/bbc2/shuffled/compare/1.1.0...1.2.0
   [1.1.0]: https://github.com/bbc2/shuffled/compare/1.0.2...1.1.0
   [1.0.2]: https://github.com/bbc2/shuffled/compare/1.0.1...1.0.2
   [1.0.1]: https://github.com/bbc2/shuffled/compare/1.0.0...1.0.1
