@@ -1,12 +1,21 @@
 # Shuffled: Random iterators for large integer ranges
 
-## Usage
-
 Shuffled is a library for iterating randomly and without repetition over integer ranges.
 It doesn’t store all the integers in memory so that you can work with ranges of up to
 2<sup>128</sup> elements, even with your standard RAM available.
 
+## Installation
+
+``` shell
+pip install shuffled
+```
+
+## Usage
+
+Example: Generating a permutation of integers.
+
 ``` python
+>>> from shuffled import Shuffled
 >>> shuffled_range = Shuffled(10)
 >>> list(shuffled_range)
 [4, 1, 2, 9, 8, 5, 3, 0, 6, 7]
@@ -15,7 +24,11 @@ It doesn’t store all the integers in memory so that you can work with ranges o
 [4, 1, 2, 9, 8, 5, 3, 0, 6, 7]
 ```
 
+Example: Listing all IP addresses in a subnet in random order.
+
 ``` python
+>>> import ipaddress
+>>> from shuffled import Shuffled
 >>> network = ipaddress.IPv4Network('10.0.0.0/8')
 >>> shuffled_range = Shuffled(network.num_addresses)
 >>> for index in shuffled_range:
@@ -27,12 +40,15 @@ It doesn’t store all the integers in memory so that you can work with ranges o
 10.79.219.74
 10.166.105.25
 10.19.5.91
-[...]
+# Continues for all 16M addresses in the subnet
 ```
 
 ## Release
 
-- Update the [changelog](CHANGELOG.md).
-- Bump the version identified in [`pyproject.toml`](pyproject.toml).
+- Update the [changelog].
+- Bump the version identified in [`pyproject.toml`].
 - After those changes are merged into `main`, tag the commit on `main` and push it.
   - The CI/CD process will publish the new package version on PyPI.
+
+  [changelog]: CHANGELOG.md
+  [`pyproject.toml`]: pyproject.toml
