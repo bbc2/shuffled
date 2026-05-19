@@ -1,10 +1,12 @@
 # Shuffled: Random iterators for large integer ranges
 
+## Usage
+
 Shuffled is a library for iterating randomly and without repetition over integer ranges.
-It doesn't store all the integers in memory so that you can work with ranges of up to
+It doesn’t store all the integers in memory so that you can work with ranges of up to
 2<sup>128</sup> elements, even with your standard RAM available.
 
-```python
+``` python
 >>> shuffled_range = Shuffled(10)
 >>> list(shuffled_range)
 [4, 1, 2, 9, 8, 5, 3, 0, 6, 7]
@@ -13,7 +15,7 @@ It doesn't store all the integers in memory so that you can work with ranges of 
 [4, 1, 2, 9, 8, 5, 3, 0, 6, 7]
 ```
 
-```python
+``` python
 >>> network = ipaddress.IPv4Network('10.0.0.0/8')
 >>> shuffled_range = Shuffled(network.num_addresses)
 >>> for index in shuffled_range:
@@ -27,3 +29,10 @@ It doesn't store all the integers in memory so that you can work with ranges of 
 10.19.5.91
 [...]
 ```
+
+## Release
+
+- Update the [changelog](CHANGELOG.md).
+- Bump the version identified in [`pyproject.toml`](pyproject.toml).
+- After those changes are merged into `main`, tag the commit on `main` and push it.
+  - The CI/CD process will publish the new package version on PyPI.
