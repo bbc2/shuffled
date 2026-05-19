@@ -27,7 +27,7 @@ class AesRandomizer(Randomizer):
         self._encryptor = cipher.encryptor()
 
     def randomize(self, integer: int) -> int:
-        encoded = integer.to_bytes(128, byteorder="big")
+        encoded = integer.to_bytes(16, byteorder="big")
         encrypted = self._encryptor.update(encoded)
         return int.from_bytes(encrypted, byteorder="big")
 
