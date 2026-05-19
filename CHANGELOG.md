@@ -13,6 +13,7 @@ Versioning].
   ordering of integers for existing seeds, which may be a breaking change depending
   on the use case.
 - Add support for negative indexes.
+- Add support for slices.
 
 ## [1.1.0] - 2022-12-29
 
