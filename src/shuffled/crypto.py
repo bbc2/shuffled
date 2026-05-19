@@ -2,7 +2,6 @@ import math
 from abc import ABC, abstractmethod
 from typing import Sequence
 
-from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
 from . import feistel
@@ -23,7 +22,7 @@ class AesRandomizer(Randomizer):
         return 2**128
 
     def __init__(self, key: bytes) -> None:
-        cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+        cipher = Cipher(algorithms.AES(key), modes.ECB())
         self._encryptor = cipher.encryptor()
 
     def randomize(self, integer: int) -> int:
