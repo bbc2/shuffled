@@ -12,6 +12,7 @@ Versioning].
 - Improve performance by reducing the AES plaintext size. Note: this changes the
   ordering of integers for existing seeds, which may be a breaking change depending
   on the use case.
+- Add support for negative indexes.
 
 ## [1.1.0] - 2022-12-29
 
